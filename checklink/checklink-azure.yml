@@ -13,6 +13,6 @@ jobs:
        cd checklink
        checklink-docs-dev.sh
        ls -l checklink
-       if [[ ! -s checklink-docs-dev.log ]]; then echo "Good job! No broken links were found"; else echo "Got broken links"; cat checklink-docs-dev.log; false; fi
+       if [[ -f checklink-docs-dev.log && -s checklink-docs-dev.log ]]; then echo "Got broken links"; cat checklink-docs-dev.log; false; else echo "Good job! No broken links were found"; fi
      displayName: 'link checker for docs.fast.ai docs-dev.fast.ai'
      continueOnError: true
