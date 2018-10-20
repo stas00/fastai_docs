@@ -1,0 +1,17 @@
+# This pipeline is designed to run as a cron-job and not triggered by every build - once a day is probably enough
+
+jobs:
+
+- job: 'docs_websites_linkchecker'
+
+  pool:
+    vmImage: 'Ubuntu-16.04'
+
+  steps:
+   - script: |
+      echo "Testing docs"
+      checklink/checklink-docs-dev.sh
+      ls -l checklink
+      if [[ ! -s checklink-docs-dev.log ]]; then echo "Good job! No broken were linux found"; else echo "Got broken links"; cat checklink-docs-dev.log; false; fi
+    displayName: 'link checker for docs.fast.ai docs-dev.fast.ai'
+    continueOnError: true
