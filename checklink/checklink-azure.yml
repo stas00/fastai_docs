@@ -9,9 +9,9 @@ jobs:
 
   steps:
    - script: |
-      echo "Testing docs"
-      checklink/checklink-docs-dev.sh
-      ls -l checklink
-      if [[ ! -s checklink-docs-dev.log ]]; then echo "Good job! No broken were linux found"; else echo "Got broken links"; cat checklink-docs-dev.log; false; fi
-    displayName: 'link checker for docs.fast.ai docs-dev.fast.ai'
-    continueOnError: true
+       echo "Testing docs"
+       checklink/checklink-docs-dev.sh
+       ls -l checklink
+       if [[ ! -s checklink-docs-dev.log ]]; then echo "Good job! No broken were linux found"; else echo "Got broken links"; cat checklink-docs-dev.log; false; fi
+     displayName: 'link checker for docs.fast.ai docs-dev.fast.ai'
+     continueOnError: true
