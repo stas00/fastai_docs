@@ -8,7 +8,6 @@ jobs:
     vmImage: 'Ubuntu-16.04'
 
   steps:
-
     - script: |
        echo "Testing docs"
        cd checklink
@@ -16,15 +15,15 @@ jobs:
        ls -l checklink
        if [[ ! -f checklink-docs-dev.log ]]; then echo "Program didn't run"; false; fi
        if [[ -s checklink-docs-dev.log ]]; then echo "Got broken links"; cat checklink-docs-dev.log; false; else echo "Good job! No broken links were found"; fi
-     displayName: 'link checker for docs.fast.ai'
-     continueOnError: true
+    displayName: 'link checker for docs.fast.ai'
+    continueOnError: true
 
-   - script: |
+    - script: |
        echo "Testing docs-dev"
        cd checklink
        ./checklink-docs-dev-dev.sh
        ls -l checklink
        if [[ ! -f checklink-docs-dev-dev.log ]]; then echo "Program didn't run"; false; fi
        if [[ -s checklink-docs-dev-dev.log ]]; then echo "Got broken links"; cat checklink-docs-dev-dev.log; false; else echo "Good job! No broken links were found"; fi
-     displayName: 'link checker for docs-dev-dev.fast.ai'
-     continueOnError: true
+    displayName: 'link checker for docs-dev-dev.fast.ai'
+    continueOnError: true
