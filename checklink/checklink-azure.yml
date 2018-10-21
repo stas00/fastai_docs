@@ -8,7 +8,8 @@ jobs:
     vmImage: 'Ubuntu-16.04'
 
   steps:
-   - script: |
+
+    - script: |
        echo "Testing docs"
        cd checklink
        ./checklink-docs-dev.sh
@@ -18,7 +19,6 @@ jobs:
      displayName: 'link checker for docs.fast.ai'
      continueOnError: true
 
-  steps:
    - script: |
        echo "Testing docs-dev"
        cd checklink
