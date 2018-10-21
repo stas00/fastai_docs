@@ -1,31 +1,43 @@
-# Portable Link Checker
+# fastai Link Checker
 
 This is https://github.com/w3c/link-checker with some custom tweaks.
 
+## Prerequisites
 
+```
+sudo apt install w3c-linkchecker
+```
 
 ## Usage
 
-Run the self-contained perl executable:
+Note, that if you have just committed changes to git, wait a few minutes for github pages to sync, otherwise you'll be testing an outdated live site.
+
+Test docs*.fast.ai for broken links and anchors:
 
 ```
-./checklink-linux [...]
+checklink-docs.sh
+checklink-docs-dev.sh
 ```
 
+Each file logs to console and also into `checklink-docs.log` and `checklink-docs-dev.log`
 
+You can add `--html` inside those scripts if you prefer to have the html output (in which case change the scripts to `|tee checklink-docs-log.html` or similar, since it dumps the output to stdout.
 
-## Build
+## Checking the site locally:
 
-The rest of the information is for those who can't use the above executable as is.
-
-
-## Using the perl script directly
-
-You of course don't need the executable, just install its prerequisites with:
+XXX: After we make the real filenames and the links consistent (i.e. either both using .html or both not) we can then do a much faster test on the local system:
 
 ```
-apt install cpanminus
-cpanm W3C::LinkChecker
+fastai-checklink --masquerade "/ https://docs.fast.ai/" docs
+```
+
+## More on Prerequisites
+
+If for any reason you don't have the apt packages for `w3c-linkchecker`, you can install those manually with:
+
+```
+sudo apt install cpanminus
+sudo cpanm W3C::LinkChecker
 ```
 
 or via CPAN shell:
@@ -36,12 +48,16 @@ perl -MCPAN -e shell
 install install W3C::LinkChecker
 ```
 
-and now you can invoke `./checklink` directly.
+and now you can invoke `./checklink`.
 
+
+## Portable sript
+
+You can ignore the rest of this document, unless you'd like to build a perl executable with all the prerequisites built in. It's not part of the repo because of its significant size.
 
 ## Building the executable
 
-If for any reason you need to update the executable (or make one for another platform), install the script's dependencies (previous step), the build tools and then make the executable.
+If for any reason you need to create an executable (or make one for another platform), install the script's dependencies (previous step), the build tools and then make the executable.
 
 ## Build tools prerequisites
 
