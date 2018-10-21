@@ -10,6 +10,13 @@ jobs:
   steps:
 
   - script: |
+      echo "Installing prerequisites"
+      sudo apt install cpanminus
+      sudo cpanm W3C::LinkChecker
+    displayName: 'Installing prerequisites'
+    continueOnError: false
+
+  - script: |
       echo "Testing docs-dev"
       cd checklink
       ./checklink-docs-dev.sh

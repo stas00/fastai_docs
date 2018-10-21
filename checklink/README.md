@@ -24,12 +24,14 @@ The rest of the information is for those who can't use the above executable as i
 You of course don't need the executable, just install its prerequisites with:
 
 ```
+apt install cpanminus
 cpanm W3C::LinkChecker
 ```
 
 or via CPAN shell:
 
 ```
+apt install cpanplus
 perl -MCPAN -e shell
 install install W3C::LinkChecker
 ```
