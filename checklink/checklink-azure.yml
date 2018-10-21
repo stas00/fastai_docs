@@ -11,7 +11,7 @@ jobs:
 
   - script: |
       echo "Installing prerequisites"
-      sudo apt install linkchecker w3c-linkchecker
+      sudo apt install w3c-linkchecker
       #sudo apt install cpanminus
       #sudo cpanm W3C::LinkChecker
     displayName: 'Installing prerequisites'
