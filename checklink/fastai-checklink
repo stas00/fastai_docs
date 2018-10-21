@@ -2744,7 +2744,8 @@ on how to solve this</a>.';
                 $currloc->{message} || '',
 
                 # What to do
-                wrap(' To do: ', '        ', $whattodo)
+                # fastai: remove noise
+                # wrap(' To do: ', '        ', $whattodo)
             );
             if ($#fragments >= 0) {
                 if ($currloc->{code} == 200) {
